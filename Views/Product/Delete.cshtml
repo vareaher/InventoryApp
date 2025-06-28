@@ -1,0 +1,17 @@
+﻿@model InventoryApp.Models.Product
+@{
+    ViewData["Title"] = "Delete Product";
+    Layout = "_Layout";
+}
+
+<h2>Delete Product</h2>
+
+<div class="alert alert-warning">
+    <p>Are you sure you want to delete <strong>@Model.Name</strong> (ID: @Model.ProductID)?</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.ProductID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Product" class="btn btn-secondary">Cancel</a>
+</form>

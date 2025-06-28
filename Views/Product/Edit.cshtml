@@ -1,0 +1,20 @@
+﻿@model InventoryApp.Models.Product
+@{
+    ViewData["Title"] = "Update Quantity";
+    Layout = "_Layout";
+}
+
+<h2>Update Quantity for @Model.Name</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="id" value="@Model.ProductID" />
+    <div class="form-group">
+        <label>Current Quantity: @Model.Quantity</label>
+    </div>
+    <div class="form-group">
+        <label>Quantity Change (e.g. +5, -3)</label>
+        <input name="quantityChange" type="number" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/Product" class="btn btn-secondary">Cancel</a>
+</form>

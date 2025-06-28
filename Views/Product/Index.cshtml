@@ -1,0 +1,44 @@
+﻿@model List<InventoryApp.Models.Product>
+@{
+    ViewData["Title"] = "Product Inventory";
+    Layout = "_Layout";
+}
+
+<h1>Inventory</h1>
+
+<form method="get" class="form-inline mb-3">
+    <div>
+        <input type="text" name="name" placeholder="Search by name" class="form-control" />
+        <input type="number" name="minQty" placeholder="Min Qty" class="form-control" />
+        <input type="number" name="maxQty" placeholder="Max Qty" class="form-control" />
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="/Product" class="btn btn-secondary">Reset</a>
+    </div>
+</form>
+
+<a class="btn btn-success mb-3" href="/Product/Create">Add New Product</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.Name</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="/Product/Edit/@item.ProductID">Update Qty</a>
+                    <a class="btn btn-sm btn-danger" href="/Product/Delete/@item.ProductID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
